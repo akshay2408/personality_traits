@@ -11,6 +11,7 @@ import { ShowScreen } from './components/ShowScreen';
 import { ResultScreen } from './components/ResultScreen';
 function App() {
   const [landing, setLanding] = useState(true)
+  let screen = "here is screen"
   return (
     <div>
       {
@@ -23,7 +24,7 @@ function App() {
         <Route path="/" element={<HomeScreen />} />
         <Route path="/create" element={<CreateScreen />} />
         <Route path='/show' element={<ShowScreen />} />
-        <Route path='/result' element={<ResultScreen />} />
+        <Route path='/result' element={<ResultScreen screen={screen}/>} />
       </Routes>
       </>
 }

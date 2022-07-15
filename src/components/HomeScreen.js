@@ -6,16 +6,26 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router-dom";
 export default function HomeScreen() {
     const [arrIndex, setArrIndex] = useState([]);
     const [optionArr, setOptionArr] = useState([])
+    const [result,setResult] = useState()
+    let navigate = useNavigate();
     const handleChange = (ans, index) => {
-        let data
         setArrIndex([...arrIndex, index]);
         setOptionArr([...optionArr, ans]);
-        console.log("handle change here ", ans, index)
+        
+
     }
-    console.log("arrr--->", arrIndex,optionArr)
+    const handleSubmit = () =>{
+        let res = 0;
+        optionArr && optionArr.map((item,index)=>{
+            res = res + parseInt(item.point)
+        })
+        navigate("/result", {state:{result : res/optionArr.length}});
+        // console.log("handle change here ", ans, index)
+    } 
     return (
         <div className='container'>
             <div className='row my-3'>
@@ -72,7 +82,7 @@ export default function HomeScreen() {
                     })
                 }
                 <div className='align-items-center py-2 text-center mt-4'>
-                    <Button color="primary">Show Result</Button>
+                    <Button color="primary" onClick={handleSubmit}>Show Result</Button>
                 </div>
             </div>
         </div>
