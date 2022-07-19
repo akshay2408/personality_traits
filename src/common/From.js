@@ -22,7 +22,6 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
             setAgree(data.answers[3].point)
             setStrongAgr(data.answers[4].point)
         }
-        console.log("editdata----->", data)
     }, []);
 
     const quehandle = (e) => {
@@ -30,24 +29,19 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
     }
     const strdishandle = (e) => {
         setStrongDis(e.target.value)
-        console.log("==")
     }
     const dishandle = (e) => {
         setDisagree(e.target.value)
-        console.log("==")
     }
     const neutralhandle = (e) => {
         setNeutral(e.target.value)
-        console.log("==")
     }
     const agreehandle = (e) => {
         setAgree(e.target.value)
-        console.log("==")
     }
 
     const stragreehandle = (e) => {
         setStrongAgr(e.target.value)
-        console.log("==")
     }
 
     const handleSubmit = () => {
@@ -77,7 +71,6 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
             ]
         }
         datas.push(data)
-        console.log(datas)
         setAlertShow(true)
         setQuestion("")
         setStrongDis("")
@@ -121,41 +114,41 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
                 Submit successfully
             </Alert>
             <Form>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3" controlId="Question">
                     <Form.Label>Question</Form.Label>
-                    <Form.Control value={question} onChange={(e) => quehandle(e)} type="text" placeholder="Write your Question" />
+                    <Form.Control value={question} name="Question" onChange={(e) => quehandle(e)} type="text" placeholder="Write your Question" />
                 </Form.Group>
                 <Row>
                     <Col>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3" controlId="StronglyDisagreePoints">
                             <Form.Label>Strongly disagree</Form.Label>
-                            <Form.Control value={strongdis} onChange={strdishandle} type="text" placeholder="Strongly disagree points" />
+                            <Form.Control name="StronglyDisagreePoints" value={strongdis} onChange={strdishandle} type="number" min="0" max="100" placeholder="Strongly disagree points" />
                         </Form.Group>
                     </Col>
                     <Col>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3" controlId="DisagreePoints">
                             <Form.Label>Disagree</Form.Label>
-                            <Form.Control value={disagree} onChange={dishandle} type="text" placeholder="Disagree points" />
+                            <Form.Control name="DisagreePoints" value={disagree} onChange={dishandle} type="number" min="0" max="100" placeholder="Disagree points" />
                         </Form.Group>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3" controlId="NeitherAgreeNotDisagreePoints">
                             <Form.Label>Neither agree not disagree</Form.Label>
-                            <Form.Control value={neutral} onChange={neutralhandle} type="text" placeholder="Neither agree not disagree points" />
+                            <Form.Control name="NeitherAgreeNotDisagreePoints" value={neutral} onChange={neutralhandle} type="number" min="0" max="100" placeholder="Neither agree not disagree points" />
                         </Form.Group>
                     </Col>
                     <Col>
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-3" controlId="AgreePoints">
                             <Form.Label>Agree</Form.Label>
-                            <Form.Control value={agree} onChange={agreehandle} type="text" placeholder="Agree points" />
+                            <Form.Control name="AgreePoints" value={agree} onChange={agreehandle} type="number" min="0" max="100" placeholder="Agree points" />
                         </Form.Group>
                     </Col>
                 </Row>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3" controlId="StronglyAgreePoints">
                     <Form.Label>Strongly Agree</Form.Label>
-                    <Form.Control value={strongAgr} onChange={stragreehandle} type="text" placeholder="Strongly Agree points" />
+                    <Form.Control name="StronglyAgreePoints" value={strongAgr} onChange={stragreehandle} type="number" min="0" max="100" placeholder="Strongly Agree points" />
                 </Form.Group>
                 <Button color="primary" onClick={name == "edit" ? handleEdit : handleSubmit}>{name == "edit" ? "Edit" : "Submit"}</Button>
             </Form>
