@@ -14,6 +14,7 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
     const [strongAgr, setStrongAgr] = useState("")
     const [alertShow,setAlertShow] = useState(false)
     useEffect(() => {
+        // Set data for edit
         if (name == "edit") {
             setQuestion(data.question);
             setStrongDis(data.answers[0].point)
@@ -23,10 +24,11 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
             setStrongAgr(data.answers[4].point)
         }
     }, []);
-
+    // Function for question value
     const quehandle = (e) => {
         setQuestion(e.target.value)
     }
+    // Function for strongly disagree value
     const strdishandle = (e) => {
         if(e.target.value < 0 || e.target.value > 100){
             alert("Please enter value between 0 to 100")
@@ -34,6 +36,7 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
         }
         setStrongDis(e.target.value)
     }
+    // Function for disagree value
     const dishandle = (e) => {
         if(e.target.value < 0 || e.target.value > 100){
             alert("Please enter value between 0 to 100")
@@ -41,6 +44,7 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
         }
         setDisagree(e.target.value)
     }
+    // Function for neutral value
     const neutralhandle = (e) => {
         if(e.target.value < 0 || e.target.value > 100){
             alert("Please enter value between 0 to 100")
@@ -48,6 +52,7 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
         }
         setNeutral(e.target.value)
     }
+    // Function for agree value
     const agreehandle = (e) => {
         if(e.target.value < 0 || e.target.value > 100){
             alert("Please enter value between 0 to 100")
@@ -55,7 +60,7 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
         }
         setAgree(e.target.value)
     }
-
+    // Function for strongly agree value
     const stragreehandle = (e) => {
         if(e.target.value < 0 || e.target.value > 100){
             alert("Please enter value between 0 to 100")
@@ -63,7 +68,7 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
         }
         setStrongAgr(e.target.value)
     }
-
+    // Function for submit data
     const handleSubmit = () => {
         if(question == "" || strongdis == "" || disagree == "" || neutral == "" || agree  == "" || strongAgr == ""){
             alert("Fields can not be empty");
@@ -103,7 +108,12 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
         setAgree("")
         setStrongAgr("")
     }
+    // Function for editing data
     const handleEdit = () => {
+        if(question == "" || strongdis == "" || disagree == "" || neutral == "" || agree  == "" || strongAgr == ""){
+            alert("Fields can not be empty");
+            return
+        }
         let data = {
             question: question,
             answers: [
@@ -139,19 +149,19 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
             </Alert>
             <Form>
                 <Form.Group className="mb-3" controlId="Question">
-                    <Form.Label>Question</Form.Label>
+                    <Form.Label>Question<span style={{color:'red'}}>*</span></Form.Label>
                     <Form.Control value={question} name="Question" onChange={(e) => quehandle(e)} type="text" placeholder="Write your Question" />
                 </Form.Group>
                 <Row>
                     <Col>
                         <Form.Group className="mb-3" controlId="StronglyDisagreePoints">
-                            <Form.Label>Strongly disagree</Form.Label>
+                            <Form.Label>Strongly disagree<span style={{color:'red'}}>*</span></Form.Label>
                             <Form.Control name="StronglyDisagreePoints" value={strongdis} onChange={strdishandle} type="number" min="0" max="100" placeholder="Strongly disagree points" />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3" controlId="DisagreePoints">
-                            <Form.Label>Disagree</Form.Label>
+                            <Form.Label>Disagree<span style={{color:'red'}}>*</span></Form.Label>
                             <Form.Control name="DisagreePoints" value={disagree} onChange={dishandle} type="number" min="0" max="100" placeholder="Disagree points" />
                         </Form.Group>
                     </Col>
@@ -159,22 +169,22 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
                 <Row>
                     <Col>
                         <Form.Group className="mb-3" controlId="NeitherAgreeNotDisagreePoints">
-                            <Form.Label>Neither agree not disagree</Form.Label>
+                            <Form.Label>Neither agree not disagree<span style={{color:'red'}}>*</span></Form.Label>
                             <Form.Control name="NeitherAgreeNotDisagreePoints" value={neutral} onChange={neutralhandle} type="number" min="0" max="100" placeholder="Neither agree not disagree points" />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3" controlId="AgreePoints">
-                            <Form.Label>Agree</Form.Label>
+                            <Form.Label>Agree<span style={{color:'red'}}>*</span></Form.Label>
                             <Form.Control name="AgreePoints" value={agree} onChange={agreehandle} type="number" min="0" max="100" placeholder="Agree points" />
                         </Form.Group>
                     </Col>
                 </Row>
                 <Form.Group className="mb-3" controlId="StronglyAgreePoints">
-                    <Form.Label>Strongly Agree</Form.Label>
+                    <Form.Label>Strongly Agree<span style={{color:'red'}}>*</span></Form.Label>
                     <Form.Control name="StronglyAgreePoints" value={strongAgr} onChange={stragreehandle} type="number" min="0" max="100" placeholder="Strongly Agree points" />
                 </Form.Group>
-                <Button color="primary" onClick={name == "edit" ? handleEdit : handleSubmit}>{name == "edit" ? "Edit" : "Submit"}</Button>
+                <Button color="primary" onClick={name == "edit" ? handleEdit : handleSubmit}>{name == "edit" ? "Update" : "Submit"}</Button>
             </Form>
         </>
     )

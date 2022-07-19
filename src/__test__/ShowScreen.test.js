@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import {BrowserRouter} from 'react-router-dom';
-import {ShowScreen} from "../components/ShowScreen";
+import ShowScreen from "../components/ShowScreen";
 
 describe("Show screen",()=>{
     it("When show screen show", () =>{

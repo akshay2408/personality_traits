@@ -23,9 +23,12 @@ export default function NavBar() {
                         >
                         </IconButton>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                            {/* Redirect to home page */}
                         <Link to="/" className='navbar-link'>Personality Traits</Link>
                         </Typography>
+                        {/* Redirect to show page */}
                         <Button color="inherit"><Link to="/show" className='navbar-link'>Show</Link></Button>
+                        {/* Redirect to create page */}
                         <Button color="inherit"><Link to="/create" className='navbar-link'>Create</Link></Button>
                     </Toolbar>
                 </AppBar>
