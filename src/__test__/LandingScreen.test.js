@@ -21,7 +21,8 @@ describe("Landing screen",()=>{
                 <LandingScreen setLanding={jest.fn()}/>
             </BrowserRouter>
         )
-
+       let title = screen.getByText("Start your personality trait test").innerHTML
+       expect(title).toBe("Start your personality trait test")
        let text = screen.queryByText("Start").textContent
        expect(text).toBe("Start")
 

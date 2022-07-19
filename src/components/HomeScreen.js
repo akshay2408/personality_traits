@@ -23,21 +23,23 @@ export default function HomeScreen() {
         <div className='container'>
             <div className='row my-3'>
                 <div className='col-md-12 col-xl-10 mx-auto d-flex justify-content-between align-items-center py-2 text-center'>
-                    <div className='w-50'></div>
-                    <div style={{ width: '60px', fontSize: '12px' }}><small data-testid="strongly-disagree" >Strongly disagree</small></div>
-                    <div style={{ width: '60px', fontSize: '12px' }}><small data-testid="disagree">Disagree</small></div>
-                    <div style={{ width: '60px', fontSize: '12px' }}><small data-testid="neither-disagree">Neither agree not disagree</small></div>
-                    <div style={{ width: '60px', fontSize: '12px' }}><small data-testid="agree">Agree</small></div>
-                    <div style={{ width: '60px', fontSize: '12px' }}><small data-testid="strongly-agree">Strongly Agree</small></div>
+                    <p>&nbsp;</p>
+                    <div className='w-25'></div>
+                    <div style={{ width: '80px', fontSize: '12px' }}><small data-testid="strongly-disagree" >Strongly disagree</small></div>
+                    <div style={{ width: '80px', fontSize: '12px' }}><small data-testid="disagree">Disagree</small></div>
+                    <div style={{ width: '80px', fontSize: '12px' }}><small data-testid="neither-disagree">Neither agree not disagree</small></div>
+                    <div style={{ width: '80px', fontSize: '12px' }}><small data-testid="agree">Agree</small></div>
+                    <div style={{ width: '80px', fontSize: '12px' }}><small data-testid="strongly-agree">Strongly Agree</small></div>
                 </div>
                 {
                     sampledata && sampledata.map((data, mainindex) => {
                         return (
                             <div key={mainindex} className='col-md-12 col-xl-10 mx-auto d-flex justify-content-between align-items-center py-2 text-center'>
-                                <p className='mb-0 w-50 text-end'>{data.question}</p>
+                                <p>{mainindex+1}.</p>
+                                <p className='mb-0 w-25 text-end'>{data.question}</p>
                                 {data.answers.map((ans, index) => {
                                     return (
-                                        <div key={index} style={{ width: '60px' }}>
+                                        <div key={index} style={{ width: '80px' }}>
                                             <input id={index} type="radio" disabled={arrIndex.includes(mainindex) ? true : false} name={data.question} onClick={() => handleChange(ans, mainindex)} />
                                         </div>
                                     )
@@ -47,7 +49,7 @@ export default function HomeScreen() {
                     })
                 }
                 <div className='align-items-center py-2 text-center mt-4'>
-                    <Button color="primary" onClick={handleSubmit}>Show Result</Button>
+                    <Button color="primary" disabled={arrIndex.length !== sampledata.length ? true : false} onClick={handleSubmit}>Show Result</Button>
                 </div>
             </div>
         </div>

@@ -15,3 +15,6 @@ code {
   text-decoration: none;
   color: #fff ;
 }
+.navbar-link:hover{
+  color: #fff;
+}

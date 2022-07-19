@@ -33,15 +33,17 @@ export const ShowScreen = () => {
                 {
                     updatedata && updatedata.map((item, index) => {
                         return (
-                            <div className='my-3 w-50 mx-auto card card-body shadow-sm' key={index}>
-                                <Button color="primary" data-testid="delete" style={{ position: 'absolute', right: 60, top: 2 }} onClick={() => handleDelete(index)}>Delete</Button>
-                                <Button color="primary" data-testid="edit" style={{ position: 'absolute', right: 0, top: 2 }} onClick={() => dataset(item,index)}>Edit</Button>
-                                <p>Q{index + 1}. {item.question}</p>
-                                <p>{item.answers[0].type}  {item.answers[0].point}</p>
-                                <p>{item.answers[1].type}  {item.answers[1].point}</p>
-                                <p>{item.answers[2].type}  {item.answers[2].point}</p>
-                                <p>{item.answers[3].type}  {item.answers[3].point}</p>
-                                <p>{item.answers[4].type}  {item.answers[4].point}</p>
+                            <div className='my-3 w-50 mx-auto card card-body shadow-sm' key={index} style={{ backgroundColor: '#f7f7f7' }}>                                
+                                <p className="mb-1">Q{index + 1}. {item.question}</p>
+                                <p className="mb-1">{item.answers[0].type}  {item.answers[0].point}</p>
+                                <p className="mb-1">{item.answers[1].type}  {item.answers[1].point}</p>
+                                <p className="mb-1">{item.answers[2].type}  {item.answers[2].point}</p>
+                                <p className="mb-1">{item.answers[3].type}  {item.answers[3].point}</p>
+                                <p className="mb-1">{item.answers[4].type}  {item.answers[4].point}</p>
+                                <div className="mt-4 text-right">
+                                    <Button color="primary" data-testid="delete" className="me-2" onClick={() => handleDelete(index)}>Delete</Button>
+                                    <Button color="primary" data-testid="edit"  onClick={() => dataset(item,index)}>Edit</Button>
+                                </div>
                             </div>
                         )
                     })

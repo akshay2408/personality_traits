@@ -28,23 +28,47 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
         setQuestion(e.target.value)
     }
     const strdishandle = (e) => {
+        if(e.target.value < 0 || e.target.value > 100){
+            alert("Please enter value between 0 to 100")
+            return
+        }
         setStrongDis(e.target.value)
     }
     const dishandle = (e) => {
+        if(e.target.value < 0 || e.target.value > 100){
+            alert("Please enter value between 0 to 100")
+            return
+        }
         setDisagree(e.target.value)
     }
     const neutralhandle = (e) => {
+        if(e.target.value < 0 || e.target.value > 100){
+            alert("Please enter value between 0 to 100")
+            return
+        }
         setNeutral(e.target.value)
     }
     const agreehandle = (e) => {
+        if(e.target.value < 0 || e.target.value > 100){
+            alert("Please enter value between 0 to 100")
+            return
+        }
         setAgree(e.target.value)
     }
 
     const stragreehandle = (e) => {
+        if(e.target.value < 0 || e.target.value > 100){
+            alert("Please enter value between 0 to 100")
+            return
+        }
         setStrongAgr(e.target.value)
     }
 
     const handleSubmit = () => {
+        if(question == "" || strongdis == "" || disagree == "" || neutral == "" || agree  == "" || strongAgr == ""){
+            alert("Fields can not be empty");
+            return
+        }
         let data = {
             question: question,
             answers: [

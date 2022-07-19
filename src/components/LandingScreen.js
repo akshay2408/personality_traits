@@ -9,8 +9,9 @@ export default function LandingScreen({ setLanding }) {
 
     }
   return (
-    <div className="position-absolute bg-white justify-content-center w-100 d-flex align-items-center" style={{height:"100vh",}}>
-        <div>
+    <div className="bg-white justify-content-center w-100 d-flex align-items-center" style={{height:"100vh",}}>
+        <div className="text-center">
+            <p style={{fontSize:30,fontWeight:'bold'}}>Start your personality trait test</p>
             <Button className="bg-primary text-white" color="inherit" onClick={handleChange}>Start</Button>
         </div>
     </div>
