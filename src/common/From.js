@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import datas from "../data/sampleData";
 import Alert from 'react-bootstrap/Alert';
+import { useNavigate } from "react-router-dom";
 const FormPage = ({ data, name, itemIndex, toggle, setUpdateData }) => {
     const [question, setQuestion] = useState("")
     const [strongdis, setStrongDis] = useState("")
@@ -13,6 +14,7 @@ const FormPage = ({ data, name, itemIndex, toggle, setUpdateData }) => {
     const [agree, setAgree] = useState("")
     const [strongAgr, setStrongAgr] = useState("")
     const [alertShow,setAlertShow] = useState(false)
+    const navigate = useNavigate();
     useEffect(() => {
         // Set data for edit
         if (name == "edit") {
@@ -107,6 +109,7 @@ const FormPage = ({ data, name, itemIndex, toggle, setUpdateData }) => {
         setNeutral("")
         setAgree("")
         setStrongAgr("")
+        navigate("/")
     }
     // Function for editing data
     const handleEdit = () => {

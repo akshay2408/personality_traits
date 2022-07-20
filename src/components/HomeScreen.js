@@ -24,27 +24,27 @@ export default function HomeScreen() {
     } 
     return (
         <div className='container'>
-            <div className='row my-3'>
-                <div className='col-md-12 col-xl-10 mx-auto d-flex justify-content-between align-items-center py-2 text-center'>
+            <div className='row my-3 pt-3 table-info'>
+                <div className='col-md-12 col-xl-11 mx-auto d-flex justify-content-between align-items-start py-3 mb-3 text-center border-bottom'>
                     <p>&nbsp;</p>
-                    <div className='w-25'></div>
+                    <p className='mb-0 w-25 text-start'>&nbsp;</p>
                     {/* Points heading */}
-                    <div style={{ width: '80px', fontSize: '12px' }}><small data-testid="strongly-disagree" >Strongly disagree</small></div>
-                    <div style={{ width: '80px', fontSize: '12px' }}><small data-testid="disagree">Disagree</small></div>
-                    <div style={{ width: '80px', fontSize: '12px' }}><small data-testid="neither-disagree">Neither agree not disagree</small></div>
-                    <div style={{ width: '80px', fontSize: '12px' }}><small data-testid="agree">Agree</small></div>
-                    <div style={{ width: '80px', fontSize: '12px' }}><small data-testid="strongly-agree">Strongly Agree</small></div>
+                    <div style={{ width: '100px', fontSize: '16px', lineHeight: '1.2' }} className="fw-bold"><small data-testid="strongly-disagree" >Strongly disagree</small></div>
+                    <div style={{ width: '100px', fontSize: '16px', lineHeight: '1.2' }} className="fw-bold"><small data-testid="disagree">Disagree</small></div>
+                    <div style={{ width: '100px', fontSize: '16px', lineHeight: '1.2' }} className="fw-bold"><small data-testid="neither-disagree">Neither agree not disagree</small></div>
+                    <div style={{ width: '100px', fontSize: '16px', lineHeight: '1.2' }} className="fw-bold"><small data-testid="agree">Agree</small></div>
+                    <div style={{ width: '100px', fontSize: '16px', lineHeight: '1.2' }} className="fw-bold"><small data-testid="strongly-agree">Strongly Agree</small></div>
                 </div>
                 {
                     sampledata && sampledata.map((data, mainindex) => {
                         return (
-                            <div key={mainindex} className='col-md-12 col-xl-10 mx-auto d-flex justify-content-between align-items-center py-2 text-center'>
-                                <p>{mainindex+1}.</p>
+                            <div key={mainindex} className='col-md-12 col-xl-11 mx-auto d-flex justify-content-between align-items-center py-2 px-0 text-center border-bottom'>
+                                <p className="mb-0">{mainindex+1}.</p>
                                 {/* Question */}
-                                <p className='mb-0 w-25 text-end'>{data.question}</p>
+                                <p className='mb-0 w-25 text-start'>{data.question}</p>
                                 {data.answers.map((ans, index) => {
                                     return (
-                                        <div key={index} style={{ width: '80px' }}>
+                                        <div key={index} style={{ width: '100px' }}>
                                             {/* Radio button */}
                                             <input id={index} type="radio" disabled={arrIndex.includes(mainindex) ? true : false} name={data.question} onClick={() => handleChange(ans, mainindex)} />
                                         </div>
@@ -54,7 +54,7 @@ export default function HomeScreen() {
                         )
                     })
                 }
-                <div className='align-items-center py-2 text-center mt-4'>
+                <div className='col-md-12 col-xl-11 align-items-center py-2 text-end mt-4 mx-auto px-0'>
                     <Button color="primary" disabled={arrIndex.length !== sampledata.length ? true : false} onClick={handleSubmit}>Show Result</Button>
                 </div>
             </div>
