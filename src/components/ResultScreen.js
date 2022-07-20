@@ -28,7 +28,7 @@ const ResultScreen = () => {
                         </div>
                         <div className='col-md-12'>
                             {/* show status using progress bar  */}
-                            <ProgressBar now={location.state.result.toFixed(0)} animated variant={location.state.result < 40 ? "danger" : location.state.result < 60 ? "warning" : "success"} label={`${location.state.result}%`} />
+                            <ProgressBar now={location.state.result.toFixed(0)} animated variant={location.state.result < 40 ? "danger" : location.state.result < 60 ? "warning" : "success"} label={`${location.state.result.toFixed(0)}%`} />
                         </div>
                     </div>
                     <div className='align-items-center py-2 text-center mt-4'>
