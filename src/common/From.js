@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import datas from "../data/sampleData";
 import Alert from 'react-bootstrap/Alert';
-const FormPage = ({ data, name, itemIndex, toggle }) => {
+const FormPage = ({ data, name, itemIndex, toggle, setUpdateData }) => {
     const [question, setQuestion] = useState("")
     const [strongdis, setStrongDis] = useState("")
     const [disagree, setDisagree] = useState("")
@@ -140,6 +140,7 @@ const FormPage = ({ data, name, itemIndex, toggle }) => {
             ]
         }
         datas.splice(itemIndex, 1, data)
+        setUpdateData(datas)
         toggle()
     }
     return (

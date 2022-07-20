@@ -69,7 +69,7 @@ const ShowScreen = () => {
                     </Modal.Header>
                     <Modal.Body>
                         {/* Used common component */}
-                        <Form data={editdata} name="edit" itemIndex={itemIndex} toggle={toggle}/>
+                        <Form data={editdata} name="edit" itemIndex={itemIndex} toggle={toggle} setUpdateData={setUpdateData}/>
                     </Modal.Body>
                 </Modal>
             </div>
